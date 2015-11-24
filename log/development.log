@@ -1,0 +1,4077 @@
+  [1m[36m (46.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (31.2ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateUsuarios (20151124223644)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  CREATE TABLE "usuarios" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nombre" varchar(255), "apellido" varchar(255), "correo" varchar(255), "edad" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124223644"]]
+  [1m[35m (46.8ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-24 19:38:16 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (14.0ms)
+Completed 500 Internal Server Error in 2509ms
+
+ActionView::Template::Error (TypeError: El objeto no acepta esta propiedad o método
+  (in C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/turbolinks-2.5.3/lib/assets/javascripts/turbolinks.js.coffee)):
+    3: <head>
+    4:   <title>Ventadesushi</title>
+    5:   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    6:   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    7:   <%= csrf_meta_tags %>
+    8: </head>
+    9: <body>
+  app/views/layouts/application.html.erb:6:in `_app_views_layouts_application_html_erb___156092890_20552328'
+
+
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (32.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-24 19:38:51 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 10ms (Views: 10.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 19:38:51 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 19:38:51 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddDeviseToUsuarios (20151124224120)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mALTER TABLE "usuarios" ADD "email" varchar(255) DEFAULT '' NOT NULL[0m
+  [1m[35m (0.0ms)[0m  ALTER TABLE "usuarios" ADD "encrypted_password" varchar(255) DEFAULT '' NOT NULL
+  [1m[36m (0.0ms)[0m  [1mALTER TABLE "usuarios" ADD "reset_password_token" varchar(255)[0m
+  [1m[35m (0.0ms)[0m  ALTER TABLE "usuarios" ADD "reset_password_sent_at" datetime
+  [1m[36m (0.0ms)[0m  [1mALTER TABLE "usuarios" ADD "remember_created_at" datetime[0m
+  [1m[35m (0.0ms)[0m  ALTER TABLE "usuarios" ADD "sign_in_count" integer DEFAULT 0 NOT NULL
+  [1m[36m (0.0ms)[0m  [1mALTER TABLE "usuarios" ADD "current_sign_in_at" datetime[0m
+  [1m[35m (0.0ms)[0m  ALTER TABLE "usuarios" ADD "last_sign_in_at" datetime
+  [1m[36m (0.0ms)[0m  [1mALTER TABLE "usuarios" ADD "current_sign_in_ip" varchar(255)[0m
+  [1m[35m (0.0ms)[0m  ALTER TABLE "usuarios" ADD "last_sign_in_ip" varchar(255)
+  [1m[36m (0.0ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  CREATE UNIQUE INDEX "index_usuarios_on_email" ON "usuarios" ("email")
+  [1m[36m (0.0ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_usuarios_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_usuarios_on_email' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  CREATE UNIQUE INDEX "index_usuarios_on_reset_password_token" ON "usuarios" ("reset_password_token")
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124224120"]]
+  [1m[35m (46.8ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_usuarios_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_usuarios_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.0ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_usuarios_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_usuarios_on_email' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateProductos (20151124224648)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mCREATE TABLE "productos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nombre" varchar(255), "detalle" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20151124224648"]]
+  [1m[36m (46.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.0ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_usuarios_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_usuarios_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_usuarios_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_usuarios_on_email' AND type='index'
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateClientes (20151124224724)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mCREATE TABLE "clientes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nombre" varchar(255), "fono" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20151124224724"]]
+  [1m[36m (46.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.0ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_usuarios_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_usuarios_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_usuarios_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_usuarios_on_email' AND type='index'
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateFrecuentes (20151124224917)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (15.6ms)[0m  [1mCREATE TABLE "frecuentes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255), "cliente_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mCREATE  INDEX "index_frecuentes_on_cliente_id" ON "frecuentes" ("cliente_id")[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20151124224917"]]
+  [1m[36m (46.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.0ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_frecuentes_on_cliente_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_frecuentes_on_cliente_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_usuarios_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_usuarios_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.0ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_usuarios_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_usuarios_on_email' AND type='index'
+[0m
+
+
+Started GET "/clientes" for 127.0.0.1 at 2015-11-24 19:49:47 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ClientesController#index as HTML
+  [1m[35mCliente Load (0.0ms)[0m  SELECT "clientes".* FROM "clientes"
+  Rendered clientes/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 133ms (Views: 121.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 19:49:47 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 19:49:48 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 19:49:48 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 19:49:48 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 19:49:48 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 19:49:48 -0300
+
+
+Started GET "/clientes/new" for 127.0.0.1 at 2015-11-24 19:49:49 -0300
+Processing by ClientesController#new as HTML
+  Rendered clientes/_form.html.erb (160.0ms)
+  Rendered clientes/new.html.erb within layouts/application (222.6ms)
+Completed 200 OK in 260ms (Views: 259.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 19:49:50 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 19:49:50 -0300
+
+
+Started POST "/clientes" for 127.0.0.1 at 2015-11-24 19:49:57 -0300
+Processing by ClientesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tqxCyDAtR41dbquesBZDuSC6+uIm3LtbYwOlPZMJP98=", "cliente"=>{"nombre"=>"Luciano Cisternas", "fono"=>"9655488"}, "commit"=>"Create Cliente"}
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "clientes" ("created_at", "fono", "nombre", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2015-11-24 22:49:57.257410"], ["fono", "9655488"], ["nombre", "Luciano Cisternas"], ["updated_at", "2015-11-24 22:49:57.257410"]]
+  [1m[36m (45.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/clientes/1
+Completed 302 Found in 57ms (ActiveRecord: 46.0ms)
+
+
+Started GET "/clientes/1" for 127.0.0.1 at 2015-11-24 19:49:57 -0300
+Processing by ClientesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered clientes/show.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 27ms (Views: 25.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 19:49:57 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 19:49:57 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 19:49:57 -0300
+
+
+Started GET "/clientes" for 127.0.0.1 at 2015-11-24 19:49:59 -0300
+Processing by ClientesController#index as HTML
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT "clientes".* FROM "clientes"[0m
+  Rendered clientes/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 34ms (Views: 33.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 19:49:59 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 19:49:59 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 19:49:59 -0300
+
+
+Started GET "/clientes/new" for 127.0.0.1 at 2015-11-24 19:50:01 -0300
+Processing by ClientesController#new as HTML
+  Rendered clientes/_form.html.erb (0.0ms)
+  Rendered clientes/new.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 35ms (Views: 34.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:01 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:01 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:01 -0300
+
+
+Started POST "/clientes" for 127.0.0.1 at 2015-11-24 19:50:07 -0300
+Processing by ClientesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tqxCyDAtR41dbquesBZDuSC6+uIm3LtbYwOlPZMJP98=", "cliente"=>{"nombre"=>"Miguel Quiroz", "fono"=>"99566321"}, "commit"=>"Create Cliente"}
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "clientes" ("created_at", "fono", "nombre", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2015-11-24 22:50:08.010537"], ["fono", "99566321"], ["nombre", "Miguel Quiroz"], ["updated_at", "2015-11-24 22:50:08.010537"]]
+  [1m[35m (52.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/clientes/2
+Completed 302 Found in 59ms (ActiveRecord: 53.0ms)
+
+
+Started GET "/clientes/2" for 127.0.0.1 at 2015-11-24 19:50:08 -0300
+Processing by ClientesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered clientes/show.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 26ms (Views: 25.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:08 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:08 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:08 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:08 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:08 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:08 -0300
+
+
+Started GET "/clientes" for 127.0.0.1 at 2015-11-24 19:50:09 -0300
+Processing by ClientesController#index as HTML
+  [1m[35mCliente Load (0.0ms)[0m  SELECT "clientes".* FROM "clientes"
+  Rendered clientes/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 28ms (Views: 26.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:09 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:09 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:09 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:09 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:09 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:09 -0300
+
+
+Started GET "/productos" for 127.0.0.1 at 2015-11-24 19:50:20 -0300
+Processing by ProductosController#index as HTML
+  [1m[36mProducto Load (0.0ms)[0m  [1mSELECT "productos".* FROM "productos"[0m
+  Rendered productos/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 55ms (Views: 53.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:20 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:20 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:20 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:20 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:20 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:20 -0300
+
+
+Started GET "/productos/new" for 127.0.0.1 at 2015-11-24 19:50:22 -0300
+Processing by ProductosController#new as HTML
+  Rendered productos/_form.html.erb (4.0ms)
+  Rendered productos/new.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 47ms (Views: 46.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:22 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:22 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:22 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:22 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:22 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:22 -0300
+
+
+Started POST "/productos" for 127.0.0.1 at 2015-11-24 19:50:29 -0300
+Processing by ProductosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tqxCyDAtR41dbquesBZDuSC6+uIm3LtbYwOlPZMJP98=", "producto"=>{"nombre"=>"Promo 1", "detalle"=>"20 piezas"}, "commit"=>"Create Producto"}
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "productos" ("created_at", "detalle", "nombre", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2015-11-24 22:50:29.018946"], ["detalle", "20 piezas"], ["nombre", "Promo 1"], ["updated_at", "2015-11-24 22:50:29.018946"]]
+  [1m[35m (68.6ms)[0m  commit transaction
+Redirected to http://localhost:3000/productos/1
+Completed 302 Found in 73ms (ActiveRecord: 68.6ms)
+
+
+Started GET "/productos/1" for 127.0.0.1 at 2015-11-24 19:50:29 -0300
+Processing by ProductosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProducto Load (0.0ms)[0m  [1mSELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered productos/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 42ms (Views: 40.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:29 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:29 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:29 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:29 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:29 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:29 -0300
+
+
+Started GET "/productos" for 127.0.0.1 at 2015-11-24 19:50:30 -0300
+Processing by ProductosController#index as HTML
+  [1m[35mProducto Load (0.0ms)[0m  SELECT "productos".* FROM "productos"
+  Rendered productos/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 51ms (Views: 50.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:30 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:30 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:30 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:30 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:30 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:30 -0300
+
+
+Started GET "/productos/new" for 127.0.0.1 at 2015-11-24 19:50:31 -0300
+Processing by ProductosController#new as HTML
+  Rendered productos/_form.html.erb (1.0ms)
+  Rendered productos/new.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 46ms (Views: 45.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:31 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:31 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:31 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:31 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:31 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:31 -0300
+
+
+Started POST "/productos" for 127.0.0.1 at 2015-11-24 19:50:37 -0300
+Processing by ProductosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tqxCyDAtR41dbquesBZDuSC6+uIm3LtbYwOlPZMJP98=", "producto"=>{"nombre"=>"Promo 2", "detalle"=>"30 piezas"}, "commit"=>"Create Producto"}
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "productos" ("created_at", "detalle", "nombre", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2015-11-24 22:50:37.598048"], ["detalle", "30 piezas"], ["nombre", "Promo 2"], ["updated_at", "2015-11-24 22:50:37.598048"]]
+  [1m[36m (41.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/productos/2
+Completed 302 Found in 48ms (ActiveRecord: 42.0ms)
+
+
+Started GET "/productos/2" for 127.0.0.1 at 2015-11-24 19:50:37 -0300
+Processing by ProductosController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mProducto Load (1.0ms)[0m  SELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered productos/show.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 42ms (Views: 41.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:37 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:37 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:37 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:37 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:37 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:37 -0300
+
+
+Started GET "/productos" for 127.0.0.1 at 2015-11-24 19:50:38 -0300
+Processing by ProductosController#index as HTML
+  [1m[36mProducto Load (0.0ms)[0m  [1mSELECT "productos".* FROM "productos"[0m
+  Rendered productos/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 44ms (Views: 43.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:38 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:38 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:38 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:38 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:38 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:38 -0300
+
+
+Started GET "/productos/new" for 127.0.0.1 at 2015-11-24 19:50:40 -0300
+Processing by ProductosController#new as HTML
+  Rendered productos/_form.html.erb (1.0ms)
+  Rendered productos/new.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 52ms (Views: 51.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:40 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:40 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:40 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:40 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:40 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:40 -0300
+
+
+Started POST "/productos" for 127.0.0.1 at 2015-11-24 19:50:49 -0300
+Processing by ProductosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tqxCyDAtR41dbquesBZDuSC6+uIm3LtbYwOlPZMJP98=", "producto"=>{"nombre"=>"Promo 3", "detalle"=>"40 piezas"}, "commit"=>"Create Producto"}
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "productos" ("created_at", "detalle", "nombre", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2015-11-24 22:50:49.066370"], ["detalle", "40 piezas"], ["nombre", "Promo 3"], ["updated_at", "2015-11-24 22:50:49.066370"]]
+  [1m[35m (56.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/productos/3
+Completed 302 Found in 64ms (ActiveRecord: 57.0ms)
+
+
+Started GET "/productos/3" for 127.0.0.1 at 2015-11-24 19:50:49 -0300
+Processing by ProductosController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mProducto Load (1.0ms)[0m  [1mSELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered productos/show.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 26ms (Views: 25.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:49 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:49 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:49 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:49 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:49 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:49 -0300
+
+
+Started GET "/productos" for 127.0.0.1 at 2015-11-24 19:50:50 -0300
+Processing by ProductosController#index as HTML
+  [1m[35mProducto Load (0.0ms)[0m  SELECT "productos".* FROM "productos"
+  Rendered productos/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 36ms (Views: 35.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:50 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:50 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:50 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:50 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:50 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:50 -0300
+
+
+Started GET "/frecuentes" for 127.0.0.1 at 2015-11-24 19:50:57 -0300
+Processing by FrecuentesController#index as HTML
+  [1m[36mFrecuente Load (0.0ms)[0m  [1mSELECT "frecuentes".* FROM "frecuentes"[0m
+  Rendered frecuentes/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 68ms (Views: 27.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:57 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:57 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:57 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:57 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:57 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:57 -0300
+
+
+Started GET "/frecuentes/new" for 127.0.0.1 at 2015-11-24 19:50:59 -0300
+Processing by FrecuentesController#new as HTML
+  Rendered frecuentes/_form.html.erb (16.6ms)
+  Rendered frecuentes/new.html.erb within layouts/application (17.6ms)
+Completed 200 OK in 40ms (Views: 39.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:59 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:59 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:59 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:59 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:59 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 19:50:59 -0300
+
+
+Started GET "/frecuentes" for 127.0.0.1 at 2015-11-24 19:51:15 -0300
+Processing by FrecuentesController#index as HTML
+  [1m[35mFrecuente Load (0.0ms)[0m  SELECT "frecuentes".* FROM "frecuentes"
+  Rendered frecuentes/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 33ms (Views: 32.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 19:51:15 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 19:51:15 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 19:51:15 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 19:51:15 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 19:51:15 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 19:51:15 -0300
+
+
+Started GET "/frecuentes" for 127.0.0.1 at 2015-11-24 19:55:42 -0300
+Processing by FrecuentesController#index as HTML
+  [1m[36mFrecuente Load (0.0ms)[0m  [1mSELECT "frecuentes".* FROM "frecuentes"[0m
+  Rendered frecuentes/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 28ms (Views: 26.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 19:55:42 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 19:55:42 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 19:55:42 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 19:55:42 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 19:55:42 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 19:55:42 -0300
+
+
+Started GET "/frecuentes/new" for 127.0.0.1 at 2015-11-24 19:55:44 -0300
+Processing by FrecuentesController#new as HTML
+  Rendered frecuentes/_form.html.erb (18.6ms)
+  Rendered frecuentes/new.html.erb within layouts/application (18.6ms)
+Completed 500 Internal Server Error in 20ms
+
+ActionView::Template::Error (undefined local variable or method `cliente' for #<#<Class:0x3c74dc0>:0x4380918>):
+    17:   </div>
+    18:   <div class="field">
+    19:     <%= f.label :cliente_id %><br>
+    20:     <%= f.select("cliente_id",cliente.all.collect{|l| [l.nombre, l.id ]}, {include_blank:'select cliente'})%>
+    21:   </div>
+    22:   <div class="actions">
+    23:     <%= f.submit %>
+  app/views/frecuentes/_form.html.erb:20:in `block in _app_views_frecuentes__form_html_erb__60623786_35620080'
+  app/views/frecuentes/_form.html.erb:1:in `_app_views_frecuentes__form_html_erb__60623786_35620080'
+  app/views/frecuentes/new.html.erb:3:in `_app_views_frecuentes_new_html_erb___904927313_31534740'
+  app/controllers/frecuentes_controller.rb:17:in `new'
+
+
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.0ms)
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (16.0ms)
+
+
+Started GET "/frecuentes/new" for 127.0.0.1 at 2015-11-24 19:56:42 -0300
+Processing by FrecuentesController#new as HTML
+  [1m[35mCliente Load (0.0ms)[0m  SELECT "clientes".* FROM "clientes"
+  Rendered frecuentes/_form.html.erb (24.0ms)
+  Rendered frecuentes/new.html.erb within layouts/application (25.0ms)
+Completed 200 OK in 65ms (Views: 64.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 19:56:42 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 19:56:42 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 19:56:42 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 19:56:42 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 19:56:42 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 19:56:42 -0300
+
+
+Started POST "/frecuentes" for 127.0.0.1 at 2015-11-24 19:56:58 -0300
+Processing by FrecuentesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tqxCyDAtR41dbquesBZDuSC6+uIm3LtbYwOlPZMJP98=", "frecuente"=>{"email"=>"luciano.cisternas@gmail.com", "cliente_id"=>"1"}, "commit"=>"Create Frecuente"}
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "frecuentes" ("cliente_id", "created_at", "email", "updated_at") VALUES (?, ?, ?, ?)  [["cliente_id", 1], ["created_at", "2015-11-24 22:56:58.812255"], ["email", "luciano.cisternas@gmail.com"], ["updated_at", "2015-11-24 22:56:58.812255"]]
+  [1m[36m (55.6ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/frecuentes/1
+Completed 302 Found in 61ms (ActiveRecord: 55.6ms)
+
+
+Started GET "/frecuentes/1" for 127.0.0.1 at 2015-11-24 19:56:58 -0300
+Processing by FrecuentesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mFrecuente Load (0.0ms)[0m  SELECT  "frecuentes".* FROM "frecuentes"  WHERE "frecuentes"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered frecuentes/show.html.erb within layouts/application (81.0ms)
+Completed 200 OK in 106ms (Views: 105.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 19:56:59 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 19:56:59 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 19:56:59 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 19:56:59 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 19:56:59 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 19:56:59 -0300
+
+
+Started GET "/frecuentes/1" for 127.0.0.1 at 2015-11-24 19:57:24 -0300
+Processing by FrecuentesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mFrecuente Load (0.0ms)[0m  SELECT  "frecuentes".* FROM "frecuentes"  WHERE "frecuentes"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered frecuentes/show.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 36ms (Views: 35.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 19:57:24 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 19:57:24 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 19:57:25 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 19:57:25 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 19:57:25 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 19:57:25 -0300
+
+
+Started GET "/frecuentes" for 127.0.0.1 at 2015-11-24 19:57:29 -0300
+Processing by FrecuentesController#index as HTML
+  [1m[35mFrecuente Load (0.0ms)[0m  SELECT "frecuentes".* FROM "frecuentes"
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered frecuentes/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 51ms (Views: 49.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 19:57:29 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 19:57:29 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 19:57:29 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 19:57:29 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 19:57:29 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 19:57:29 -0300
+
+
+Started GET "/frecuentes" for 127.0.0.1 at 2015-11-24 19:58:05 -0300
+Processing by FrecuentesController#index as HTML
+  [1m[35mFrecuente Load (0.0ms)[0m  SELECT "frecuentes".* FROM "frecuentes"
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered frecuentes/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 44ms (Views: 43.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 19:58:05 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 19:58:05 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 19:58:05 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 19:58:05 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 19:58:05 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 19:58:05 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreatePedidos (20151124230511)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mCREATE TABLE "pedidos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "cliente_id" integer, "producto_id" integer, "observacion" text, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mCREATE  INDEX "index_pedidos_on_cliente_id" ON "pedidos" ("cliente_id")[0m
+  [1m[35m (0.0ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_pedidos_on_cliente_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_pedidos_on_cliente_id' AND type='index'
+
+  [1m[36m (0.0ms)[0m  [1mCREATE  INDEX "index_pedidos_on_producto_id" ON "pedidos" ("producto_id")[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20151124230511"]]
+  [1m[36m (46.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.0ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_frecuentes_on_cliente_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_frecuentes_on_cliente_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_pedidos_on_producto_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_pedidos_on_producto_id' AND type='index'
+
+  [1m[36m (0.0ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_pedidos_on_cliente_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_pedidos_on_cliente_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_usuarios_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_usuarios_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.0ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_usuarios_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_usuarios_on_email' AND type='index'
+[0m
+
+
+Started GET "/pedidos" for 127.0.0.1 at 2015-11-24 20:05:42 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PedidosController#index as HTML
+  [1m[35mPedido Load (0.0ms)[0m  SELECT "pedidos".* FROM "pedidos"
+  Rendered pedidos/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 115ms (Views: 97.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:05:43 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:05:43 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:05:43 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:05:43 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:05:43 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:05:43 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:05:43 -0300
+
+
+Started GET "/pedidos/new" for 127.0.0.1 at 2015-11-24 20:05:44 -0300
+Processing by PedidosController#new as HTML
+  Rendered pedidos/_form.html.erb (22.0ms)
+  Rendered pedidos/new.html.erb within layouts/application (26.0ms)
+Completed 200 OK in 71ms (Views: 70.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:05:44 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:05:44 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:05:44 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:05:44 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:05:44 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:05:44 -0300
+
+
+Started GET "/pedidos/new" for 127.0.0.1 at 2015-11-24 20:07:52 -0300
+Processing by PedidosController#new as HTML
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT "clientes".* FROM "clientes"[0m
+  Rendered pedidos/_form.html.erb (10.0ms)
+  Rendered pedidos/new.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 40ms (Views: 40.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:07:52 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:07:52 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:07:52 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:07:52 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:07:52 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:07:52 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:07:52 -0300
+
+
+Started GET "/pedidos/new" for 127.0.0.1 at 2015-11-24 20:08:37 -0300
+Processing by PedidosController#new as HTML
+  [1m[35mCliente Load (0.0ms)[0m  SELECT "clientes".* FROM "clientes"
+  [1m[36mProducto Load (0.0ms)[0m  [1mSELECT "productos".* FROM "productos"[0m
+  Rendered pedidos/_form.html.erb (10.0ms)
+  Rendered pedidos/new.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 55ms (Views: 54.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:08:37 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:08:37 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:08:37 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:08:37 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:08:37 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:08:37 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:08:37 -0300
+
+
+Started POST "/pedidos" for 127.0.0.1 at 2015-11-24 20:08:46 -0300
+Processing by PedidosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tqxCyDAtR41dbquesBZDuSC6+uIm3LtbYwOlPZMJP98=", "pedido"=>{"cliente_id"=>"1", "producto_id"=>"1", "observacion"=>"Llevar a las 21 horas."}, "commit"=>"Create Pedido"}
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "pedidos" ("cliente_id", "created_at", "observacion", "producto_id", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cliente_id", 1], ["created_at", "2015-11-24 23:08:46.961619"], ["observacion", "Llevar a las 21 horas."], ["producto_id", 1], ["updated_at", "2015-11-24 23:08:46.961619"]]
+  [1m[35m (46.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/pedidos/1
+Completed 302 Found in 58ms (ActiveRecord: 47.0ms)
+
+
+Started GET "/pedidos/1" for 127.0.0.1 at 2015-11-24 20:08:47 -0300
+Processing by PedidosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPedido Load (0.0ms)[0m  [1mSELECT  "pedidos".* FROM "pedidos"  WHERE "pedidos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mProducto Load (0.0ms)[0m  [1mSELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered pedidos/show.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 43ms (Views: 41.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:08:47 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:08:47 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:08:47 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:08:47 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:08:47 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:08:47 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:08:47 -0300
+
+
+Started GET "/pedidos/1" for 127.0.0.1 at 2015-11-24 20:09:11 -0300
+Processing by PedidosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPedido Load (0.0ms)[0m  SELECT  "pedidos".* FROM "pedidos"  WHERE "pedidos"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mProducto Load (0.0ms)[0m  SELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered pedidos/show.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 58ms (Views: 57.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:09:11 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:09:11 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:09:11 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:09:11 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:09:11 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:09:11 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:09:11 -0300
+
+
+Started GET "/pedidos" for 127.0.0.1 at 2015-11-24 20:09:15 -0300
+Processing by PedidosController#index as HTML
+  [1m[36mPedido Load (0.0ms)[0m  [1mSELECT "pedidos".* FROM "pedidos"[0m
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mProducto Load (0.0ms)[0m  [1mSELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered pedidos/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 32ms (Views: 32.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:09:15 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:09:15 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:09:15 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:09:15 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:09:15 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:09:15 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:09:15 -0300
+
+
+Started GET "/pedidos" for 127.0.0.1 at 2015-11-24 20:09:37 -0300
+Processing by PedidosController#index as HTML
+  [1m[35mPedido Load (1.0ms)[0m  SELECT "pedidos".* FROM "pedidos"
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mProducto Load (0.0ms)[0m  SELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered pedidos/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 32ms (Views: 31.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:09:38 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:09:38 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:09:38 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:09:38 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:09:38 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:09:38 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:09:38 -0300
+
+
+Started GET "/pedidos/new" for 127.0.0.1 at 2015-11-24 20:09:45 -0300
+Processing by PedidosController#new as HTML
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT "clientes".* FROM "clientes"[0m
+  [1m[35mProducto Load (0.0ms)[0m  SELECT "productos".* FROM "productos"
+  Rendered pedidos/_form.html.erb (15.6ms)
+  Rendered pedidos/new.html.erb within layouts/application (16.6ms)
+Completed 200 OK in 42ms (Views: 41.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:09:45 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:09:45 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:09:45 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:09:45 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:09:45 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:09:45 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:09:45 -0300
+
+
+Started POST "/pedidos" for 127.0.0.1 at 2015-11-24 20:09:59 -0300
+Processing by PedidosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tqxCyDAtR41dbquesBZDuSC6+uIm3LtbYwOlPZMJP98=", "pedido"=>{"cliente_id"=>"2", "producto_id"=>"3", "observacion"=>"Llevar lo antes posible."}, "commit"=>"Create Pedido"}
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "pedidos" ("cliente_id", "created_at", "observacion", "producto_id", "updated_at") VALUES (?, ?, ?, ?, ?)  [["cliente_id", 2], ["created_at", "2015-11-24 23:09:59.899543"], ["observacion", "Llevar lo antes posible."], ["producto_id", 3], ["updated_at", "2015-11-24 23:09:59.899543"]]
+  [1m[36m (75.6ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/pedidos/2
+Completed 302 Found in 80ms (ActiveRecord: 75.6ms)
+
+
+Started GET "/pedidos/2" for 127.0.0.1 at 2015-11-24 20:09:59 -0300
+Processing by PedidosController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mPedido Load (1.0ms)[0m  SELECT  "pedidos".* FROM "pedidos"  WHERE "pedidos"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCliente Load (1.0ms)[0m  [1mSELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mProducto Load (0.0ms)[0m  SELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered pedidos/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 32ms (Views: 30.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:10:00 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:10:00 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:10:00 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:10:00 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:10:00 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:10:00 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:10:00 -0300
+
+
+Started GET "/pedidos" for 127.0.0.1 at 2015-11-24 20:10:03 -0300
+Processing by PedidosController#index as HTML
+  [1m[36mPedido Load (0.0ms)[0m  [1mSELECT "pedidos".* FROM "pedidos"[0m
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mProducto Load (0.0ms)[0m  [1mSELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mProducto Load (0.0ms)[0m  [1mSELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered pedidos/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 49ms (Views: 48.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:10:03 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:10:03 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:10:03 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:10:03 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:10:03 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:10:03 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:10:03 -0300
+
+
+Started GET "/pedidos" for 127.0.0.1 at 2015-11-24 20:11:42 -0300
+Processing by PedidosController#index as HTML
+  [1m[35mPedido Load (0.0ms)[0m  SELECT "pedidos".* FROM "pedidos"
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mProducto Load (0.0ms)[0m  SELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mProducto Load (0.0ms)[0m  SELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered pedidos/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 33ms (Views: 32.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:11:42 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:11:42 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:11:42 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:11:42 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:11:42 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:11:42 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:11:42 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-24 20:12:00 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 54ms (Views: 53.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:12:00 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:12:00 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:12:00 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:12:00 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:12:00 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:12:00 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:12:00 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-24 20:12:15 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (18.0ms)
+Completed 200 OK in 77ms (Views: 67.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:12:15 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:12:15 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:12:15 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:12:15 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:12:15 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:12:15 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:12:15 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-24 20:14:28 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 44ms (Views: 43.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:14:28 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:14:28 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:14:28 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:14:28 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:14:28 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:14:28 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:14:28 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-24 20:15:36 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (8.0ms)
+Completed 500 Internal Server Error in 53ms
+
+ActionView::Template::Error (undefined local variable or method `medicos_path' for #<#<Class:0x57ff4f8>:0x3a9ed68>):
+     7: <!-- Collect the nav links, forms, and other content for toggling -->
+     8:   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+     9:     <ul class="nav navbar-nav">
+    10:       <li><a href="<%=medicos_path%>">Medicos</a></li>
+    11:       <li><a href="<%=pacientes_path%>">Pacientes</a></li>
+    12:       <li><a href="<%=ficha_medicos_path%>">Fichas Medicos </a></li>
+    13:       <li><a href="<%=ficha_ingresos_path%>">Fichas Ingresos </a></li>
+  app/views/shared/_navbar.html.erb:10:in `_app_views_shared__navbar_html_erb__290621685_46280640'
+  app/views/layouts/application.html.erb:13:in `_app_views_layouts_application_html_erb___571884764_31108692'
+
+
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (15.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-24 20:17:33 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (5.0ms)
+Completed 500 Internal Server Error in 51ms
+
+ActionView::Template::Error (undefined local variable or method `ficha_pacientes_path' for #<#<Class:0x57ff4f8>:0x3a59228>):
+    11:       <li><a href="<%=clientes_path%>">Clientes</a></li>
+    12:       <li><a href="<%=productos_path%>">Mis Productos </a></li>
+    13:       <li><a href="<%=frecuentes_path%>">Clientes Frecuentes </a></li>
+    14:       <li><a href="<%=ficha_pacientes_path%>">Fichas Pacientes </a></li>
+    15:       </ul>
+    16:       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    17:           <ul class="nav navbar-nav">
+  app/views/shared/_navbar.html.erb:14:in `_app_views_shared__navbar_html_erb__290621685_42830352'
+  app/views/layouts/application.html.erb:13:in `_app_views_layouts_application_html_erb___571884764_31108692'
+
+
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (15.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-24 20:17:47 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (4.0ms)
+Completed 200 OK in 42ms (Views: 41.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:47 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:47 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:47 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:47 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:47 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:47 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:47 -0300
+
+
+Started GET "/pedidos" for 127.0.0.1 at 2015-11-24 20:17:49 -0300
+Processing by PedidosController#index as HTML
+  [1m[35mPedido Load (0.0ms)[0m  SELECT "pedidos".* FROM "pedidos"
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mProducto Load (0.0ms)[0m  SELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mProducto Load (0.0ms)[0m  SELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered pedidos/index.html.erb within layouts/application (46.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 91ms (Views: 88.6ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:49 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:49 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:49 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:49 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:49 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:49 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:49 -0300
+
+
+Started GET "/clientes" for 127.0.0.1 at 2015-11-24 20:17:51 -0300
+Processing by ClientesController#index as HTML
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT "clientes".* FROM "clientes"[0m
+  Rendered clientes/index.html.erb within layouts/application (16.6ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 61ms (Views: 60.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:51 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:51 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:51 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:51 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:51 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:51 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:51 -0300
+
+
+Started GET "/productos" for 127.0.0.1 at 2015-11-24 20:17:53 -0300
+Processing by ProductosController#index as HTML
+  [1m[35mProducto Load (0.0ms)[0m  SELECT "productos".* FROM "productos"
+  Rendered productos/index.html.erb within layouts/application (15.6ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 59ms (Views: 58.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:53 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:53 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:53 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:53 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:53 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:53 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:53 -0300
+
+
+Started GET "/frecuentes" for 127.0.0.1 at 2015-11-24 20:17:53 -0300
+Processing by FrecuentesController#index as HTML
+  [1m[36mFrecuente Load (0.0ms)[0m  [1mSELECT "frecuentes".* FROM "frecuentes"[0m
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered frecuentes/index.html.erb within layouts/application (20.6ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 48ms (Views: 47.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:53 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:53 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:53 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:54 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:54 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:54 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:54 -0300
+
+
+Started GET "/frecuentes/1" for 127.0.0.1 at 2015-11-24 20:17:59 -0300
+Processing by FrecuentesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mFrecuente Load (0.0ms)[0m  [1mSELECT  "frecuentes".* FROM "frecuentes"  WHERE "frecuentes"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered frecuentes/show.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 42ms (Views: 41.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:59 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:59 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:59 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:59 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:59 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:59 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:17:59 -0300
+
+
+Started GET "/frecuentes" for 127.0.0.1 at 2015-11-24 20:18:01 -0300
+Processing by FrecuentesController#index as HTML
+  [1m[36mFrecuente Load (0.0ms)[0m  [1mSELECT "frecuentes".* FROM "frecuentes"[0m
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered frecuentes/index.html.erb within layouts/application (3.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 33ms (Views: 32.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:01 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:01 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:01 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:01 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:01 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:01 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:01 -0300
+
+
+Started GET "/frecuentes" for 127.0.0.1 at 2015-11-24 20:18:03 -0300
+Processing by FrecuentesController#index as HTML
+  [1m[36mFrecuente Load (0.0ms)[0m  [1mSELECT "frecuentes".* FROM "frecuentes"[0m
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered frecuentes/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 57ms (Views: 55.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:03 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:03 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:03 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:03 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:03 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:03 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:03 -0300
+
+
+Started GET "/frecuentes" for 127.0.0.1 at 2015-11-24 20:18:05 -0300
+Processing by FrecuentesController#index as HTML
+  [1m[36mFrecuente Load (0.0ms)[0m  [1mSELECT "frecuentes".* FROM "frecuentes"[0m
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered frecuentes/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 41ms (Views: 40.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:05 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:05 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:05 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:05 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:05 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:05 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:05 -0300
+
+
+Started GET "/clientes" for 127.0.0.1 at 2015-11-24 20:18:09 -0300
+Processing by ClientesController#index as HTML
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT "clientes".* FROM "clientes"[0m
+  Rendered clientes/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 57ms (Views: 56.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:09 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:09 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:09 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:09 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:09 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:09 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:09 -0300
+
+
+Started GET "/frecuentes" for 127.0.0.1 at 2015-11-24 20:18:10 -0300
+Processing by FrecuentesController#index as HTML
+  [1m[35mFrecuente Load (0.0ms)[0m  SELECT "frecuentes".* FROM "frecuentes"
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered frecuentes/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 40ms (Views: 39.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:10 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:10 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:10 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:10 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:10 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:10 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:10 -0300
+
+
+Started GET "/frecuentes" for 127.0.0.1 at 2015-11-24 20:18:57 -0300
+Processing by FrecuentesController#index as HTML
+  [1m[35mFrecuente Load (0.0ms)[0m  SELECT "frecuentes".* FROM "frecuentes"
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered frecuentes/index.html.erb within layouts/application (3.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 33ms (Views: 32.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:57 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:57 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:57 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:57 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:57 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:57 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:18:57 -0300
+
+
+Started GET "/frecuentes" for 127.0.0.1 at 2015-11-24 20:19:00 -0300
+Processing by FrecuentesController#index as HTML
+  [1m[35mFrecuente Load (0.0ms)[0m  SELECT "frecuentes".* FROM "frecuentes"
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered frecuentes/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 57ms (Views: 56.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:00 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:00 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:00 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:00 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:00 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:00 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:00 -0300
+
+
+Started GET "/frecuentes/new" for 127.0.0.1 at 2015-11-24 20:19:15 -0300
+Processing by FrecuentesController#new as HTML
+  [1m[35mCliente Load (0.0ms)[0m  SELECT "clientes".* FROM "clientes"
+  Rendered frecuentes/_form.html.erb (34.0ms)
+  Rendered frecuentes/new.html.erb within layouts/application (35.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 65ms (Views: 65.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:16 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:16 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:16 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:16 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:16 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:16 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:16 -0300
+
+
+Started POST "/frecuentes" for 127.0.0.1 at 2015-11-24 20:19:30 -0300
+Processing by FrecuentesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tqxCyDAtR41dbquesBZDuSC6+uIm3LtbYwOlPZMJP98=", "frecuente"=>{"email"=>"miki79@gaymail.com", "cliente_id"=>"2"}, "commit"=>"Create Frecuente"}
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "frecuentes" ("cliente_id", "created_at", "email", "updated_at") VALUES (?, ?, ?, ?)  [["cliente_id", 2], ["created_at", "2015-11-24 23:19:30.690151"], ["email", "miki79@gaymail.com"], ["updated_at", "2015-11-24 23:19:30.690151"]]
+  [1m[36m (71.6ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/frecuentes/2
+Completed 302 Found in 77ms (ActiveRecord: 71.6ms)
+
+
+Started GET "/frecuentes/2" for 127.0.0.1 at 2015-11-24 20:19:30 -0300
+Processing by FrecuentesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mFrecuente Load (0.0ms)[0m  SELECT  "frecuentes".* FROM "frecuentes"  WHERE "frecuentes"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered frecuentes/show.html.erb within layouts/application (2.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 53ms (Views: 50.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:30 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:30 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:30 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:30 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:30 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:30 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:30 -0300
+
+
+Started GET "/frecuentes" for 127.0.0.1 at 2015-11-24 20:19:32 -0300
+Processing by FrecuentesController#index as HTML
+  [1m[35mFrecuente Load (0.0ms)[0m  SELECT "frecuentes".* FROM "frecuentes"
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered frecuentes/index.html.erb within layouts/application (4.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 50ms (Views: 50.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:32 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:32 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:32 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:32 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:32 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:32 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:32 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-24 20:19:37 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (1.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 46ms (Views: 46.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:37 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:37 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:37 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:37 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:37 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:37 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:37 -0300
+
+
+Started GET "/pedidos" for 127.0.0.1 at 2015-11-24 20:19:38 -0300
+Processing by PedidosController#index as HTML
+  [1m[36mPedido Load (0.0ms)[0m  [1mSELECT "pedidos".* FROM "pedidos"[0m
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mProducto Load (0.0ms)[0m  [1mSELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mProducto Load (0.0ms)[0m  [1mSELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered pedidos/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 58ms (Views: 57.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:38 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:38 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:38 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:38 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:38 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:38 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:38 -0300
+
+
+Started GET "/clientes" for 127.0.0.1 at 2015-11-24 20:19:39 -0300
+Processing by ClientesController#index as HTML
+  [1m[35mCliente Load (0.0ms)[0m  SELECT "clientes".* FROM "clientes"
+  Rendered clientes/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 56ms (Views: 55.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:39 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:39 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:39 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:39 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:39 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:39 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:39 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-24 20:19:39 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 39ms (Views: 38.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:39 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:39 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:39 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:39 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:39 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:39 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:19:39 -0300
+
+
+Started GET "/usuarios/sign_in" for 127.0.0.1 at 2015-11-24 20:22:31 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (38.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 109ms (Views: 68.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:31 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:31 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:31 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:31 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:31 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:31 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:31 -0300
+
+
+Started GET "/usuarios/sign_up" for 127.0.0.1 at 2015-11-24 20:22:38 -0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (3.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 36ms (Views: 35.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:38 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:38 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:38 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:38 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:38 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:38 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:38 -0300
+
+
+Started GET "/usuarios/sign_up" for 127.0.0.1 at 2015-11-24 20:22:42 -0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 58ms (Views: 57.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:42 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:42 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:42 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:42 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:42 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:42 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:42 -0300
+
+
+Started GET "/usuarios/sign_up" for 127.0.0.1 at 2015-11-24 20:22:43 -0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 39ms (Views: 38.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:43 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:43 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:43 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:43 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:43 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:43 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:43 -0300
+
+
+Started GET "/pedidos" for 127.0.0.1 at 2015-11-24 20:22:43 -0300
+Processing by PedidosController#index as HTML
+  [1m[36mPedido Load (0.0ms)[0m  [1mSELECT "pedidos".* FROM "pedidos"[0m
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mProducto Load (0.0ms)[0m  [1mSELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mProducto Load (0.0ms)[0m  [1mSELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered pedidos/index.html.erb within layouts/application (15.6ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 43ms (Views: 42.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:44 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:44 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:44 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:44 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:44 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:44 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:44 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-24 20:22:44 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 55ms (Views: 54.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:44 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:44 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:44 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:44 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:44 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:44 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:44 -0300
+
+
+Started GET "/usuarios/sign_up" for 127.0.0.1 at 2015-11-24 20:22:45 -0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (3.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 50ms (Views: 50.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:45 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:45 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:45 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:45 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:45 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:45 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:22:45 -0300
+
+
+Started POST "/usuarios" for 127.0.0.1 at 2015-11-24 20:22:59 -0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tqxCyDAtR41dbquesBZDuSC6+uIm3LtbYwOlPZMJP98=", "usuario"=>{"email"=>"luciano.cisternas@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUsuario Exists (0.0ms)[0m  [1mSELECT  1 AS one FROM "usuarios"  WHERE "usuarios"."email" = 'luciano.cisternas@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "usuarios" ("created_at", "email", "encrypted_password", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2015-11-24 23:23:00.189418"], ["email", "luciano.cisternas@gmail.com"], ["encrypted_password", "$2a$10$zBPt2DvFAyNuzp3Ug4ZnGeHJBweK1VXDJELtz0kyuZ3nhOaerW7PS"], ["updated_at", "2015-11-24 23:23:00.189418"]]
+  [1m[36m (45.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Binary data inserted for `string` type on column `current_sign_in_ip`
+Binary data inserted for `string` type on column `last_sign_in_ip`
+  [1m[36mSQL (0.0ms)[0m  [1mUPDATE "usuarios" SET "current_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_at" = ?, "last_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "usuarios"."id" = 1[0m  [["current_sign_in_at", "2015-11-24 23:23:00.238421"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_at", "2015-11-24 23:23:00.238421"], ["last_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2015-11-24 23:23:00.239421"]]
+  [1m[35m (43.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 297ms (ActiveRecord: 88.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-24 20:23:00 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (0.0ms)
+  [1m[36mUsuario Load (1.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 1  ORDER BY "usuarios"."id" ASC LIMIT 1[0m
+  Rendered shared/_navbar.html.erb (50.0ms)
+Completed 200 OK in 78ms (Views: 77.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:00 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:00 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:00 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:00 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:00 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:00 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:00 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-24 20:23:07 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (0.0ms)
+  [1m[35mUsuario Load (1.0ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 1  ORDER BY "usuarios"."id" ASC LIMIT 1
+  Rendered shared/_navbar.html.erb (2.0ms)
+Completed 200 OK in 32ms (Views: 30.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:07 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:07 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:07 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:07 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:07 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:07 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:07 -0300
+
+
+Started GET "/pedidos" for 127.0.0.1 at 2015-11-24 20:23:08 -0300
+Processing by PedidosController#index as HTML
+  [1m[36mPedido Load (0.0ms)[0m  [1mSELECT "pedidos".* FROM "pedidos"[0m
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mProducto Load (0.0ms)[0m  [1mSELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mProducto Load (0.0ms)[0m  [1mSELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered pedidos/index.html.erb within layouts/application (0.0ms)
+  [1m[35mUsuario Load (0.0ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 1  ORDER BY "usuarios"."id" ASC LIMIT 1
+  Rendered shared/_navbar.html.erb (2.0ms)
+Completed 200 OK in 43ms (Views: 42.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:08 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:08 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:08 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:08 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:08 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:08 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:08 -0300
+
+
+Started GET "/clientes" for 127.0.0.1 at 2015-11-24 20:23:10 -0300
+Processing by ClientesController#index as HTML
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT "clientes".* FROM "clientes"[0m
+  Rendered clientes/index.html.erb within layouts/application (0.0ms)
+  [1m[35mUsuario Load (0.0ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 1  ORDER BY "usuarios"."id" ASC LIMIT 1
+  Rendered shared/_navbar.html.erb (2.0ms)
+Completed 200 OK in 57ms (Views: 56.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:10 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:10 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:10 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:10 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:10 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:10 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:10 -0300
+
+
+Started GET "/productos" for 127.0.0.1 at 2015-11-24 20:23:11 -0300
+Processing by ProductosController#index as HTML
+  [1m[36mProducto Load (0.0ms)[0m  [1mSELECT "productos".* FROM "productos"[0m
+  Rendered productos/index.html.erb within layouts/application (2.0ms)
+  [1m[35mUsuario Load (0.0ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 1  ORDER BY "usuarios"."id" ASC LIMIT 1
+  Rendered shared/_navbar.html.erb (2.0ms)
+Completed 200 OK in 35ms (Views: 34.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:11 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:11 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:11 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:11 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:11 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:11 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:11 -0300
+
+
+Started GET "/frecuentes" for 127.0.0.1 at 2015-11-24 20:23:12 -0300
+Processing by FrecuentesController#index as HTML
+  [1m[36mFrecuente Load (0.0ms)[0m  [1mSELECT "frecuentes".* FROM "frecuentes"[0m
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered frecuentes/index.html.erb within layouts/application (0.0ms)
+  [1m[35mUsuario Load (0.0ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 1  ORDER BY "usuarios"."id" ASC LIMIT 1
+  Rendered shared/_navbar.html.erb (3.0ms)
+Completed 200 OK in 43ms (Views: 42.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:12 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:12 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:12 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:12 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:12 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:12 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:12 -0300
+
+
+Started GET "/usuarios/sign_out" for 127.0.0.1 at 2015-11-24 20:23:12 -0300
+
+ActionController::RoutingError (No route matches [GET] "/usuarios/sign_out"):
+  actionpack (4.1.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.8) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.8) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.8) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.8) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.5) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.8) lib/rails/engine.rb:514:in `call'
+  railties (4.1.8) lib/rails/application.rb:144:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  rack (1.5.5) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.5) lib/rack/handler/webrick.rb:60:in `service'
+  C:/RailsInstaller/Ruby2.0.0/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  C:/RailsInstaller/Ruby2.0.0/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  C:/RailsInstaller/Ruby2.0.0/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/routes/_table.html.erb (4.0ms)
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (76.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-24 20:23:39 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (1.0ms)
+  [1m[35mUsuario Load (0.0ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 1  ORDER BY "usuarios"."id" ASC LIMIT 1
+  Rendered shared/_navbar.html.erb (33.0ms)
+Completed 200 OK in 112ms (Views: 101.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:39 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:39 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:39 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:39 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:39 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:39 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:39 -0300
+
+
+Started GET "/pedidos" for 127.0.0.1 at 2015-11-24 20:23:42 -0300
+Processing by PedidosController#index as HTML
+  [1m[36mPedido Load (0.0ms)[0m  [1mSELECT "pedidos".* FROM "pedidos"[0m
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mProducto Load (0.0ms)[0m  [1mSELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mProducto Load (1.0ms)[0m  [1mSELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered pedidos/index.html.erb within layouts/application (48.0ms)
+  [1m[35mUsuario Load (0.0ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 1  ORDER BY "usuarios"."id" ASC LIMIT 1
+  Rendered shared/_navbar.html.erb (2.0ms)
+Completed 200 OK in 94ms (Views: 92.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:42 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:42 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:42 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:42 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:42 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:42 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:42 -0300
+
+
+Started GET "/clientes" for 127.0.0.1 at 2015-11-24 20:23:43 -0300
+Processing by ClientesController#index as HTML
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT "clientes".* FROM "clientes"[0m
+  Rendered clientes/index.html.erb within layouts/application (15.6ms)
+  [1m[35mUsuario Load (0.0ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 1  ORDER BY "usuarios"."id" ASC LIMIT 1
+  Rendered shared/_navbar.html.erb (3.0ms)
+Completed 200 OK in 45ms (Views: 44.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:43 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:43 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:43 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:43 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:43 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:43 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:43 -0300
+
+
+Started GET "/usuarios/edit.1" for 127.0.0.1 at 2015-11-24 20:23:46 -0300
+Processing by Devise::RegistrationsController#edit as 
+  [1m[36mUsuario Load (0.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 1  ORDER BY "usuarios"."id" ASC LIMIT 1[0m
+  Rendered devise/registrations/edit.html.erb within layouts/application (36.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 90ms (Views: 74.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:46 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:46 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:47 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:47 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:47 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:47 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:47 -0300
+
+
+Started DELETE "/usuarios" for 127.0.0.1 at 2015-11-24 20:23:49 -0300
+Processing by Devise::RegistrationsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"tqxCyDAtR41dbquesBZDuSC6+uIm3LtbYwOlPZMJP98="}
+  [1m[35mUsuario Load (0.0ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 1  ORDER BY "usuarios"."id" ASC LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  DELETE FROM "usuarios" WHERE "usuarios"."id" = ?  [["id", 1]]
+  [1m[36m (70.6ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 94ms (ActiveRecord: 70.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-24 20:23:49 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (4.0ms)
+Completed 200 OK in 51ms (Views: 50.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:49 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:49 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:49 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:49 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:49 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:49 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:49 -0300
+
+
+Started GET "/clientes" for 127.0.0.1 at 2015-11-24 20:23:51 -0300
+Processing by ClientesController#index as HTML
+  [1m[35mCliente Load (0.0ms)[0m  SELECT "clientes".* FROM "clientes"
+  Rendered clientes/index.html.erb within layouts/application (2.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 32ms (Views: 31.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:52 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:52 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:52 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:52 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:52 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:52 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:52 -0300
+
+
+Started GET "/pedidos" for 127.0.0.1 at 2015-11-24 20:23:52 -0300
+Processing by PedidosController#index as HTML
+  [1m[36mPedido Load (1.0ms)[0m  [1mSELECT "pedidos".* FROM "pedidos"[0m
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mProducto Load (0.0ms)[0m  [1mSELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mProducto Load (0.0ms)[0m  [1mSELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered pedidos/index.html.erb within layouts/application (6.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 53ms (Views: 51.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:53 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:53 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:53 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:53 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:53 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:53 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:53 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-24 20:23:56 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 38ms (Views: 37.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:56 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:56 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:56 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:56 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:56 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:56 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:56 -0300
+
+
+Started GET "/pedidos" for 127.0.0.1 at 2015-11-24 20:23:57 -0300
+Processing by PedidosController#index as HTML
+  [1m[35mPedido Load (0.0ms)[0m  SELECT "pedidos".* FROM "pedidos"
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mProducto Load (0.0ms)[0m  SELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mProducto Load (0.0ms)[0m  SELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered pedidos/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 40ms (Views: 39.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:57 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:57 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:57 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:57 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:57 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:57 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:57 -0300
+
+
+Started GET "/clientes" for 127.0.0.1 at 2015-11-24 20:23:57 -0300
+Processing by ClientesController#index as HTML
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT "clientes".* FROM "clientes"[0m
+  Rendered clientes/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 57ms (Views: 55.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:57 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:57 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:57 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:57 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:57 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:57 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:57 -0300
+
+
+Started GET "/productos" for 127.0.0.1 at 2015-11-24 20:23:58 -0300
+Processing by ProductosController#index as HTML
+  [1m[35mProducto Load (0.0ms)[0m  SELECT "productos".* FROM "productos"
+  Rendered productos/index.html.erb within layouts/application (3.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 50ms (Views: 50.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:58 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:58 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:58 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:58 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:58 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:58 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:23:58 -0300
+
+
+Started GET "/productos/1" for 127.0.0.1 at 2015-11-24 20:24:00 -0300
+Processing by ProductosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProducto Load (0.0ms)[0m  [1mSELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered productos/show.html.erb within layouts/application (1.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 32ms (Views: 30.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:24:00 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:24:00 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:24:00 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:24:00 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:24:00 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:24:00 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:24:00 -0300
+
+
+Started GET "/productos" for 127.0.0.1 at 2015-11-24 20:24:01 -0300
+Processing by ProductosController#index as HTML
+  [1m[35mProducto Load (0.0ms)[0m  SELECT "productos".* FROM "productos"
+  Rendered productos/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 56ms (Views: 55.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:24:01 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:24:01 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:24:01 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:24:01 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:24:01 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:24:01 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:24:01 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-24 20:26:32 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 49ms (Views: 48.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:32 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:32 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:32 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:32 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:32 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:32 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:32 -0300
+
+
+Started GET "/pedidos" for 127.0.0.1 at 2015-11-24 20:26:33 -0300
+Processing by PedidosController#index as HTML
+  [1m[36mPedido Load (0.0ms)[0m  [1mSELECT "pedidos".* FROM "pedidos"[0m
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mProducto Load (0.0ms)[0m  [1mSELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mProducto Load (0.0ms)[0m  [1mSELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered pedidos/index.html.erb within layouts/application (20.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 68ms (Views: 64.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:33 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:33 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:33 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:33 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:33 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:33 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:33 -0300
+
+
+Started GET "/pedidos/1" for 127.0.0.1 at 2015-11-24 20:26:35 -0300
+Processing by PedidosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPedido Load (0.0ms)[0m  SELECT  "pedidos".* FROM "pedidos"  WHERE "pedidos"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mProducto Load (0.0ms)[0m  SELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered pedidos/show.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 43ms (Views: 42.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:35 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:35 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:35 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:35 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:35 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:35 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:35 -0300
+
+
+Started GET "/pedidos" for 127.0.0.1 at 2015-11-24 20:26:37 -0300
+Processing by PedidosController#index as HTML
+  [1m[36mPedido Load (1.0ms)[0m  [1mSELECT "pedidos".* FROM "pedidos"[0m
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mProducto Load (0.0ms)[0m  [1mSELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mProducto Load (0.0ms)[0m  [1mSELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered pedidos/index.html.erb within layouts/application (6.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 52ms (Views: 50.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:37 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:37 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:37 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:37 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:37 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:37 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:37 -0300
+
+
+Started GET "/pedidos/1/edit" for 127.0.0.1 at 2015-11-24 20:26:38 -0300
+Processing by PedidosController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPedido Load (0.0ms)[0m  SELECT  "pedidos".* FROM "pedidos"  WHERE "pedidos"."id" = ? LIMIT 1  [["id", 1]]
+Completed 401 Unauthorized in 4ms
+
+
+Started GET "/usuarios/sign_in" for 127.0.0.1 at 2015-11-24 20:26:38 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (7.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 47ms (Views: 38.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:38 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:38 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:38 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:38 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:38 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:38 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:38 -0300
+
+
+Started GET "/pedidos" for 127.0.0.1 at 2015-11-24 20:26:40 -0300
+Processing by PedidosController#index as HTML
+  [1m[36mPedido Load (0.0ms)[0m  [1mSELECT "pedidos".* FROM "pedidos"[0m
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mProducto Load (0.0ms)[0m  [1mSELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mProducto Load (0.0ms)[0m  [1mSELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered pedidos/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 59ms (Views: 58.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:41 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:41 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:41 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:41 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:41 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:41 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:26:41 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-24 20:27:06 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 31ms (Views: 30.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:27:06 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:27:06 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:27:06 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:27:06 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:27:06 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:27:06 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:27:06 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-24 20:27:56 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 30ms (Views: 29.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:27:56 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:27:56 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:27:56 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:27:56 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:27:56 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:27:56 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:27:56 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-24 20:28:16 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 56ms (Views: 55.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:28:16 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:28:16 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:28:16 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:28:16 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:28:16 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:28:16 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:28:16 -0300
+
+
+Started GET "/frecuentes" for 127.0.0.1 at 2015-11-24 20:28:59 -0300
+Processing by FrecuentesController#index as HTML
+  [1m[35mFrecuente Load (0.0ms)[0m  SELECT "frecuentes".* FROM "frecuentes"
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered frecuentes/index.html.erb within layouts/application (9.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 56ms (Views: 53.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:28:59 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:28:59 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:28:59 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:28:59 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:28:59 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:28:59 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:28:59 -0300
+
+
+Started GET "/productos" for 127.0.0.1 at 2015-11-24 20:29:01 -0300
+Processing by ProductosController#index as HTML
+  [1m[36mProducto Load (0.0ms)[0m  [1mSELECT "productos".* FROM "productos"[0m
+  Rendered productos/index.html.erb within layouts/application (15.6ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 61ms (Views: 60.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:01 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:01 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:01 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:01 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:01 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:01 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:01 -0300
+
+
+Started GET "/clientes" for 127.0.0.1 at 2015-11-24 20:29:01 -0300
+Processing by ClientesController#index as HTML
+  [1m[35mCliente Load (0.0ms)[0m  SELECT "clientes".* FROM "clientes"
+  Rendered clientes/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 59ms (Views: 58.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:01 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:01 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:01 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:01 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:01 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:01 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:01 -0300
+
+
+Started GET "/pedidos" for 127.0.0.1 at 2015-11-24 20:29:03 -0300
+Processing by PedidosController#index as HTML
+  [1m[36mPedido Load (0.0ms)[0m  [1mSELECT "pedidos".* FROM "pedidos"[0m
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mProducto Load (1.0ms)[0m  [1mSELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mProducto Load (0.0ms)[0m  [1mSELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered pedidos/index.html.erb within layouts/application (6.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 36ms (Views: 34.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:03 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:03 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:03 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:03 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:03 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:03 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:03 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-24 20:29:03 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 36ms (Views: 35.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:03 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:03 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:03 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:03 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:03 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:03 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:03 -0300
+
+
+Started GET "/productos" for 127.0.0.1 at 2015-11-24 20:29:06 -0300
+Processing by ProductosController#index as HTML
+  [1m[35mProducto Load (0.0ms)[0m  SELECT "productos".* FROM "productos"
+  Rendered productos/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 57ms (Views: 56.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:07 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:07 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:07 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:07 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:07 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:07 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:07 -0300
+
+
+Started GET "/frecuentes" for 127.0.0.1 at 2015-11-24 20:29:07 -0300
+Processing by FrecuentesController#index as HTML
+  [1m[36mFrecuente Load (0.0ms)[0m  [1mSELECT "frecuentes".* FROM "frecuentes"[0m
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered frecuentes/index.html.erb within layouts/application (5.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 59ms (Views: 58.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:07 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:07 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:07 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:07 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:07 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:07 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:07 -0300
+
+
+Started GET "/productos" for 127.0.0.1 at 2015-11-24 20:29:09 -0300
+Processing by ProductosController#index as HTML
+  [1m[35mProducto Load (0.0ms)[0m  SELECT "productos".* FROM "productos"
+  Rendered productos/index.html.erb within layouts/application (5.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 34ms (Views: 33.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:09 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:09 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:09 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:09 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:09 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:09 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:09 -0300
+
+
+Started GET "/clientes" for 127.0.0.1 at 2015-11-24 20:29:13 -0300
+Processing by ClientesController#index as HTML
+  [1m[36mCliente Load (1.0ms)[0m  [1mSELECT "clientes".* FROM "clientes"[0m
+  Rendered clientes/index.html.erb within layouts/application (3.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 33ms (Views: 32.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:13 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:13 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:13 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:13 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:13 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:13 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:13 -0300
+
+
+Started GET "/pedidos" for 127.0.0.1 at 2015-11-24 20:29:14 -0300
+Processing by PedidosController#index as HTML
+  [1m[35mPedido Load (0.0ms)[0m  SELECT "pedidos".* FROM "pedidos"
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mProducto Load (0.0ms)[0m  SELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mProducto Load (1.0ms)[0m  SELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered pedidos/index.html.erb within layouts/application (5.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 35ms (Views: 34.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:14 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:14 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:14 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:14 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:14 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:14 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:14 -0300
+
+
+Started GET "/clientes" for 127.0.0.1 at 2015-11-24 20:29:16 -0300
+Processing by ClientesController#index as HTML
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT "clientes".* FROM "clientes"[0m
+  Rendered clientes/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 56ms (Views: 55.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:16 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:16 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:16 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:16 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:16 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:16 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:16 -0300
+
+
+Started GET "/productos" for 127.0.0.1 at 2015-11-24 20:29:17 -0300
+Processing by ProductosController#index as HTML
+  [1m[35mProducto Load (0.0ms)[0m  SELECT "productos".* FROM "productos"
+  Rendered productos/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 56ms (Views: 55.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:17 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:17 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:17 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:17 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:17 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:17 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:17 -0300
+
+
+Started GET "/pedidos" for 127.0.0.1 at 2015-11-24 20:29:22 -0300
+Processing by PedidosController#index as HTML
+  [1m[36mPedido Load (0.0ms)[0m  [1mSELECT "pedidos".* FROM "pedidos"[0m
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mProducto Load (0.0ms)[0m  [1mSELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mProducto Load (15.6ms)[0m  [1mSELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered pedidos/index.html.erb within layouts/application (15.6ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 60ms (Views: 44.0ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:22 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:22 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:22 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:22 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:22 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:22 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:22 -0300
+
+
+Started GET "/pedidos/new" for 127.0.0.1 at 2015-11-24 20:29:23 -0300
+Processing by PedidosController#new as HTML
+Completed 401 Unauthorized in 0ms
+
+
+Started GET "/usuarios/sign_in" for 127.0.0.1 at 2015-11-24 20:29:23 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (3.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 33ms (Views: 33.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:23 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:23 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:23 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:23 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:23 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:23 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:23 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-24 20:29:26 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 46ms (Views: 46.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:26 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:26 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:26 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:26 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:26 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:26 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:29:26 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-24 20:30:10 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 46ms (Views: 46.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:10 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:10 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:10 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:10 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:10 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:10 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:10 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-24 20:30:23 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 55ms (Views: 54.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:23 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:23 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:23 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:23 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:23 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:23 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:23 -0300
+
+
+Started GET "/pedidos" for 127.0.0.1 at 2015-11-24 20:30:30 -0300
+Processing by PedidosController#index as HTML
+  [1m[35mPedido Load (0.0ms)[0m  SELECT "pedidos".* FROM "pedidos"
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mProducto Load (0.0ms)[0m  SELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mProducto Load (0.0ms)[0m  SELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered pedidos/index.html.erb within layouts/application (5.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 52ms (Views: 52.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:31 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:31 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:31 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:31 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:31 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:31 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:31 -0300
+
+
+Started GET "/clientes" for 127.0.0.1 at 2015-11-24 20:30:31 -0300
+Processing by ClientesController#index as HTML
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT "clientes".* FROM "clientes"[0m
+  Rendered clientes/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 57ms (Views: 56.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:31 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:31 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:31 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:31 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:31 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:31 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:31 -0300
+
+
+Started GET "/productos" for 127.0.0.1 at 2015-11-24 20:30:32 -0300
+Processing by ProductosController#index as HTML
+  [1m[35mProducto Load (0.0ms)[0m  SELECT "productos".* FROM "productos"
+  Rendered productos/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 41ms (Views: 40.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:32 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:32 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:32 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:32 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:32 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:32 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:32 -0300
+
+
+Started GET "/frecuentes" for 127.0.0.1 at 2015-11-24 20:30:32 -0300
+Processing by FrecuentesController#index as HTML
+  [1m[36mFrecuente Load (0.0ms)[0m  [1mSELECT "frecuentes".* FROM "frecuentes"[0m
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered frecuentes/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 75ms (Views: 74.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:33 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:33 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:33 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:33 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:33 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:33 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:33 -0300
+
+
+Started GET "/frecuentes" for 127.0.0.1 at 2015-11-24 20:30:42 -0300
+Processing by FrecuentesController#index as HTML
+  [1m[35mFrecuente Load (0.0ms)[0m  SELECT "frecuentes".* FROM "frecuentes"
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered frecuentes/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 57ms (Views: 56.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:42 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:42 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:42 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:42 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:42 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:42 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:42 -0300
+
+
+Started GET "/productos" for 127.0.0.1 at 2015-11-24 20:30:43 -0300
+Processing by ProductosController#index as HTML
+  [1m[36mProducto Load (0.0ms)[0m  [1mSELECT "productos".* FROM "productos"[0m
+  Rendered productos/index.html.erb within layouts/application (2.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 32ms (Views: 32.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:43 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:43 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:43 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:43 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:43 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:43 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:43 -0300
+
+
+Started GET "/clientes" for 127.0.0.1 at 2015-11-24 20:30:45 -0300
+Processing by ClientesController#index as HTML
+  [1m[35mCliente Load (0.0ms)[0m  SELECT "clientes".* FROM "clientes"
+  Rendered clientes/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 40ms (Views: 39.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:45 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:45 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:45 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:45 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:45 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:45 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:45 -0300
+
+
+Started GET "/pedidos" for 127.0.0.1 at 2015-11-24 20:30:46 -0300
+Processing by PedidosController#index as HTML
+  [1m[36mPedido Load (0.0ms)[0m  [1mSELECT "pedidos".* FROM "pedidos"[0m
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mProducto Load (1.0ms)[0m  [1mSELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mProducto Load (0.0ms)[0m  [1mSELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered pedidos/index.html.erb within layouts/application (7.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 54ms (Views: 53.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:46 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:46 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:46 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:46 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:46 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:46 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:30:46 -0300
+
+
+Started GET "/pedidos" for 127.0.0.1 at 2015-11-24 20:33:54 -0300
+Processing by PedidosController#index as HTML
+  [1m[35mPedido Load (1.0ms)[0m  SELECT "pedidos".* FROM "pedidos"
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mProducto Load (0.0ms)[0m  SELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mProducto Load (0.0ms)[0m  SELECT  "productos".* FROM "productos"  WHERE "productos"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered pedidos/index.html.erb within layouts/application (6.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 53ms (Views: 51.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:33:54 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:33:54 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:33:54 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:33:54 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:33:54 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:33:54 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:33:54 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-24 20:33:55 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 54ms (Views: 53.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:33:55 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:33:55 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:33:55 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:33:55 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:33:55 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:33:55 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:33:55 -0300
+
+
+Started GET "/clientes" for 127.0.0.1 at 2015-11-24 20:33:56 -0300
+Processing by ClientesController#index as HTML
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT "clientes".* FROM "clientes"[0m
+  Rendered clientes/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 41ms (Views: 39.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:33:56 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:33:56 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:33:56 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:33:56 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:33:56 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:33:56 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:33:56 -0300
+
+
+Started GET "/productos" for 127.0.0.1 at 2015-11-24 20:33:57 -0300
+Processing by ProductosController#index as HTML
+  [1m[35mProducto Load (0.0ms)[0m  SELECT "productos".* FROM "productos"
+  Rendered productos/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 37ms (Views: 36.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:33:57 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:33:57 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:33:57 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:33:57 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:33:57 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:33:57 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:33:57 -0300
+
+
+Started GET "/frecuentes" for 127.0.0.1 at 2015-11-24 20:33:57 -0300
+Processing by FrecuentesController#index as HTML
+  [1m[36mFrecuente Load (0.0ms)[0m  [1mSELECT "frecuentes".* FROM "frecuentes"[0m
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered frecuentes/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 54ms (Views: 53.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-24 20:33:57 -0300
+
+
+Started GET "/assets/frecuentes.css?body=1" for 127.0.0.1 at 2015-11-24 20:33:57 -0300
+
+
+Started GET "/assets/productos.css?body=1" for 127.0.0.1 at 2015-11-24 20:33:57 -0300
+
+
+Started GET "/assets/pedidos.css?body=1" for 127.0.0.1 at 2015-11-24 20:33:57 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-24 20:33:57 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:33:57 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:33:57 -0300

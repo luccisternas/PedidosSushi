@@ -1,0 +1,2 @@
+module FrecuentesHelper
+end

@@ -1,0 +1,29 @@
+<%= form_for(@pedido) do |f| %>
+  <% if @pedido.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pedido.errors.count, "error") %> prohibited this pedido from being saved:</h2>
+
+      <ul>
+      <% @pedido.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :cliente_id %><br>
+    <%= f.select("cliente_id",Cliente.all.collect{|l| [l.nombre, l.id ]}, {include_blank:'select Cliente'})%>
+  </div>
+  <div class="field">
+    <%= f.label :producto_id %><br>
+    <%= f.select("producto_id",Producto.all.collect{|l| [l.nombre, l.id ]}, {include_blank:'select Producto'})%>
+  </div>
+  <div class="field">
+    <%= f.label :observacion %><br>
+    <%= f.text_area :observacion %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
