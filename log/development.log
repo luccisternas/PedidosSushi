@@ -4075,3 +4075,108 @@ Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-24 20:33:57 
 
 
 Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-24 20:33:57 -0300
+  [1m[36m (48.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (38.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateUsuarios (20151124223644)
+  [1m[36m (1.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "usuarios" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nombre" varchar(255), "apellido" varchar(255), "correo" varchar(255), "edad" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124223644"]]
+  [1m[35m (42.0ms)[0m  commit transaction
+Migrating to AddDeviseToUsuarios (20151124224120)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  ALTER TABLE "usuarios" ADD "email" varchar(255) DEFAULT '' NOT NULL
+  [1m[36m (0.0ms)[0m  [1mALTER TABLE "usuarios" ADD "encrypted_password" varchar(255) DEFAULT '' NOT NULL[0m
+  [1m[35m (0.0ms)[0m  ALTER TABLE "usuarios" ADD "reset_password_token" varchar(255)
+  [1m[36m (0.0ms)[0m  [1mALTER TABLE "usuarios" ADD "reset_password_sent_at" datetime[0m
+  [1m[35m (0.0ms)[0m  ALTER TABLE "usuarios" ADD "remember_created_at" datetime
+  [1m[36m (0.0ms)[0m  [1mALTER TABLE "usuarios" ADD "sign_in_count" integer DEFAULT 0 NOT NULL[0m
+  [1m[35m (0.0ms)[0m  ALTER TABLE "usuarios" ADD "current_sign_in_at" datetime
+  [1m[36m (0.0ms)[0m  [1mALTER TABLE "usuarios" ADD "last_sign_in_at" datetime[0m
+  [1m[35m (0.0ms)[0m  ALTER TABLE "usuarios" ADD "current_sign_in_ip" varchar(255)
+  [1m[36m (0.0ms)[0m  [1mALTER TABLE "usuarios" ADD "last_sign_in_ip" varchar(255)[0m
+  [1m[35m (0.0ms)[0m  CREATE UNIQUE INDEX "index_usuarios_on_email" ON "usuarios" ("email")
+  [1m[36m (1.0ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_usuarios_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_usuarios_on_email' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  CREATE UNIQUE INDEX "index_usuarios_on_reset_password_token" ON "usuarios" ("reset_password_token")
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124224120"]]
+  [1m[35m (41.0ms)[0m  commit transaction
+Migrating to CreateProductos (20151124224648)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  CREATE TABLE "productos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nombre" varchar(255), "detalle" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124224648"]]
+  [1m[35m (39.0ms)[0m  commit transaction
+Migrating to CreateClientes (20151124224724)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "clientes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "nombre" varchar(255), "fono" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124224724"]]
+  [1m[35m (40.0ms)[0m  commit transaction
+Migrating to CreateFrecuentes (20151124224917)
+  [1m[36m (1.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  CREATE TABLE "frecuentes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255), "cliente_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (1.0ms)[0m  [1mCREATE  INDEX "index_frecuentes_on_cliente_id" ON "frecuentes" ("cliente_id")[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20151124224917"]]
+  [1m[36m (63.0ms)[0m  [1mcommit transaction[0m
+Migrating to CreatePedidos (20151124230511)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (1.0ms)[0m  [1mCREATE TABLE "pedidos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "cliente_id" integer, "producto_id" integer, "observacion" text, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.0ms)[0m  CREATE  INDEX "index_pedidos_on_cliente_id" ON "pedidos" ("cliente_id")
+  [1m[36m (0.0ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_pedidos_on_cliente_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_pedidos_on_cliente_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  CREATE  INDEX "index_pedidos_on_producto_id" ON "pedidos" ("producto_id")
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151124230511"]]
+  [1m[35m (49.0ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_frecuentes_on_cliente_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_frecuentes_on_cliente_id' AND type='index'
+
+  [1m[36m (0.0ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_pedidos_on_producto_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_pedidos_on_producto_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_pedidos_on_cliente_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_pedidos_on_cliente_id' AND type='index'
+
+  [1m[36m (0.0ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_usuarios_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_usuarios_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_usuarios_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_usuarios_on_email' AND type='index'
+
